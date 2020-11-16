@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(145, 200, 182);
+}
+h1{
+    text-align: center;
+    color:black;
+    text-rendering: auto;
+}
+h2{
+    text-align: center;
+    color:black;
+    text-rendering: auto;
+}
+form{
+    align-self: center;
+}
+label{
+    color: black;
+    text-align: center;
+}
