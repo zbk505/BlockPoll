@@ -1,7 +1,16 @@
 .App {
   text-align: center;
 }
-
+body
+{
+  background-color: blanchedalmond;
+}
+h1{
+  text-align: center;
+}
+p{
+  text-align: center;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
