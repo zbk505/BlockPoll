@@ -8,7 +8,7 @@
       name="description"
       content="Web site created using create-react-app"
     />
-    <title>React App</title>
+    <title>Block Poll</title>
   </head>
   <body>
     <h1>
@@ -18,9 +18,19 @@
         A decentralized polling solution
     </h2>
 <form>
-    <label for="pollid">Search For poll</label>
+    <label for="pollid">Search For poll: </label>
     <input type="text" id="Poll Id" name = "pollid">
+    <input type="submit" value="Search" class="button button_default">
 </form>
+
+<form class = "form form1">
+    
+    <label for="Top Polls">Top Polls: </label>
+    <input type="text" id="top" name = "top">
+</form>
+<button 
+  class="button button1">Create New Poll
+</button>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
