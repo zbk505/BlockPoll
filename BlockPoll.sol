@@ -1,47 +1,49 @@
-
 pragma solidity >=0.4.22 <0.7.0;
 
 contract BlockPoll{
     
     struct Poll{
         bytes32[] choices;
+        uint choicesCount;
         mapping(bytes32 => bool)  options;//maps
-        
         mapping(bytes32 => uint8) votes;
         mapping(address => bool) voters;
-        bytes32 winner;
+       
     }
     
     Poll[] private activePolls;
     
-    function vote(uint pollId, bytes32 choice)public
+      // Create new Poll and add it to activePolls 
+    function addNewPoll(bytes32[] memory arr) public {
+        activePolls.push(Poll(arr, arr.length));
+    }
+    
+    //vote for a choice in a poll
+    function vote(uint pollId, uint choiceId)public
     {
-        Poll storage poll = activePolls[pollId];
-        require(!poll.voters[msg.sender], "User cannot vote in a poll more than once!");
-        
-        poll.voters[msg.sender] = true;
-        poll.votes[choice] = poll.votes[choice] + 1;
+       activePolls[pollId].votes[activePolls[pollId].choices[choiceId]]++;
     }
     
-    function createPoll(bytes32[] memory options) public{
-        Poll memory p = Poll(options, "");
-        activePolls.push(p);
-    }
-    
-    function decideWinner(uint pollId) public{
-        uint highest = 0;// option with highest votes
-        Poll storage poll = activePolls[pollId];
+    //returns the index of the poll with the highest votes in active polls
+    function topPoll() public returns(uint){
+        require(activePolls.length > 0, "No active Polls!");
+        uint top;
+        uint maxVotes = 0;
         
-        for(uint i = 0; i < poll.choices.length; i++)// iterate through number of choices
+        for(uint i = 0; i < activePolls.length; i++)// loop through polls
         {
-            uint  num = poll.votes[poll.choices[i]];// number of votes for choice
+            uint votes = 0;
             
-            if(num > highest)// if current number of votes is larger than the most, make it the winner
+            Poll storage p = activePolls[i];
+            for(uint j = 0; j < p.choices.length; j++)//loop through current polls choices
             {
-                poll.winner = poll.choices[i];
-                highest = num;
+                votes += p.votes[p.choices[j]];// add votes to total
+            }
+            if(votes > maxVotes)// compare to top, if great assign new top
+            {
+                top = i;
             }
         }
-        activePolls[pollId] = poll;
+        return top;
     }
 }
