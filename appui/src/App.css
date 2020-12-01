@@ -8,6 +8,9 @@ body
 h1{
   text-align: center;
 }
+h2{
+  text-align: center;
+}
 p{
   text-align: center;
 }
@@ -25,7 +28,17 @@ p{
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.button_default{
+  background-color: lightgrey;
+}
+.button1{
+  background-color: lightgrey;
+  position: fixed;
+  text-align: right;
+}
+.form1{
+  background-color: lightgrey;
+}
 .App-link {
   color: #61dafb;
 }
