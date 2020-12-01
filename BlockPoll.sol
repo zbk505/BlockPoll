@@ -1,4 +1,3 @@
-
 pragma solidity >=0.4.22 <0.7.0;
 
 contract BlockPoll{
@@ -13,11 +12,38 @@ contract BlockPoll{
     }
     
     Poll[] private activePolls;
+    // store votes count
+    uint public votesCount;
+    
+    // store options count
+    uint public optionsCount;
+    
+    //voted event 
+    event votedEvent (
+        uint indexed _voterID
+        );
+        
+      // add numbers of options into the polls 
+    function Polls() public {
+        addOption("Option 1");
+        addOption("Option 2");
+        addOption("Option 3");
+        addOption("Option 4");
+        addOption("Option 5");
+        addOption("Option 6");
+    }
+    
+  function addOption(string _name) private {
+        optionsCount++;
+        voters[optionsCount] = voters(optionsCount, _name, 0);
+    }
     
     function vote(uint pollId, bytes32 choice)public
     {
         Poll storage poll = activePolls[pollId];
         require(!poll.voters[msg.sender], "User cannot vote in a poll more than once!");
+                // make sure that the voters are voting for the avilable options 
+        require(pollId > 0 && pollId <= optionsCount, "Not an Option");
         
         poll.voters[msg.sender] = true;
         poll.votes[choice] = poll.votes[choice] + 1;
@@ -44,4 +70,3 @@ contract BlockPoll{
         }
         activePolls[pollId] = poll;
     }
-}
