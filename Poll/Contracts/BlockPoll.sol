@@ -5,7 +5,7 @@ contract BlockPoll{
     struct Poll{
         bytes32[] choices;
         uint choicesCount;
-        mapping(bytes32 => bool)  options;//maps
+        string PollName;
         mapping(bytes32 => uint8) votes;
         mapping(address => bool) voters;
        
@@ -13,9 +13,20 @@ contract BlockPoll{
     
     Poll[] private activePolls;
     
+    function getVotes(uint pollid) public returns(uint[] memory)
+    {
+        uint length = activePolls[pollid].choicesCount;
+        uint[] memory arr =  new uint[](length);
+        
+        for(uint i = 0; i < arr.length; i++)
+        {
+            arr[i] = activePolls[pollid].votes[activePolls[pollid].choices[i]];
+        }
+        return arr;
+    }
       // Create new Poll and add it to activePolls 
-    function addNewPoll(bytes32[] memory arr) public {
-        activePolls.push(Poll(arr, arr.length));
+    function addNewPoll(bytes32[] memory arr, string memory PollName) public {
+        activePolls.push(Poll(arr, arr.length, PollName));
     }
     
     //vote for a choice in a poll
