@@ -9,11 +9,11 @@ class App extends Component {
     super(props)
     this.state = {
       Polls: [],
-      PollName: ''
+      newPollName: ''
     }
 
     this.handleVoting = this.handleVoting.bind(this);
-    this.handleAddingNewMovie = this.handleAddingNewMovie.bind(this);
+    this.handleAddingNewPoll = this.handleAddingNewPoll.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -34,15 +34,15 @@ class App extends Component {
   }
 
   async loadPollsAsync() {
-      let movies = []
-      let moviesList = await Contract.methods.getMovies().call();
-      for (let movie of moviesList) {
-          let rating = await this.getRatingAsync(movie);
-          movies.push({name: movie, rating: rating});
-          console.log(movie);
+      let polls = []
+      let pollsList = await Contract.methods.getPolls().call();
+      for (let poll of pollsList) {
+          let rating = await this.getRatingAsync(poll);
+          polls.push({name: poll, rating: rating});
+          console.log(poll);
       }
 
-      this.setState({movies: movies});
+      this.setState({polls: polls});
   }
 
   async componentDidMount() {
@@ -68,20 +68,20 @@ class App extends Component {
       web3.eth.sendSignedTransaction(raw, (err, txHash) => {
         console.log('err:', err, 'txHash:', txHash)
         if (!err) {
-            this.getRating(movie);
+            this.getRating(poll);
         }
       })
     })
   }
 
-  handleAddingPoll(Poll) {
+  handleAddingNewPoll(Poll) {
     web3.eth.getTransactionCount(defaultAccount.address, (err, txCount) => {
       const txObject = {
         nonce: web3.utils.toHex(txCount),
         gasLimit: web3.utils.toHex(468000), // Raise the gas limit to a much higher amount
         gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'wei')),
         to: Contract._address,
-        data: Contract.methods.addNewMovie(movie).encodeABI()
+        data: Contract.methods.addNewPoll(poll).encodeABI()
       }
 
       const tx = NETWORK_TYPE === 'private' ? new Tx(txObject) : new Tx(txObject, { 'chain': 'ropsten' });
@@ -93,37 +93,37 @@ class App extends Component {
       web3.eth.sendSignedTransaction(raw, (err, txHash) => {
         console.log('err:', err, 'txHash:', txHash)
         if (!err) {
-            this.loadMoviesAsync();
+            this.loadPollsAsync();
         }
       })
     })
   }
 
   handleChange(event) {
-    this.setState({newMovieName: event.target.value});
+    this.setState({newPollName: event.target.value});
   }
 
   handleSubmit(event) {
-    //alert('A name was submitted: ' + this.state.newMovieName);
+    //alert('A name was submitted: ' + this.state.newPollName);
     event.preventDefault();
-    this.handleAddingPoll(this.state.newMovieName);
+    this.handleAddingPoll(this.state.newPollName);
   }
 
   render() {
     return (
       <div className="App">
         <p className="App-intro">
-          Decentralized Polling Application
+          Decentralized Polling Application 
         </p>
         <form onSubmit={this.handleSubmit}>
         <label>
           Poll Name:
-          <input type="text" value={this.state.newMovieName} onChange={this.handleChange} />
+          <input type="text" value={this.state.newPollName} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Add New Movie" />
+        <input type="submit" value="Add New Poll" />
       </form>
-        <div className="movie-table">
-          <UpdatePoll Poll={this.state.movies} vote={this.handleVoting} />
+        <div className="poll-table">
+          <UpdatePoll Poll={this.state.polls} vote={this.handleVoting} />
         </div>
       </div>
     );
