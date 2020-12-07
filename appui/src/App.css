@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+}
+body
+{
+  background-color: rgb(161, 93, 93);
+}
+h1{
+  color:rgb(194, 190, 190);
+  text-shadow:2px 2px rgb(63, 63, 63);
+  position: relative;
+  text-align: center;
+}
+p.desc{
+  position: relative;
+  text-align: center;
+  top: -20px;
+}
+p.newpoll{
+  text-align: left;
+  font-size: 14px;
+}
+textarea.newpoll{
+  text-align: left;
+  background-color:rgb(194, 190, 190) ;
+  resize: none;
+  height: 160px;
+  border: 2px solid black;
+  border-radius: 4px;
+}
+button.submit{
+  cursor: pointer;
+  display: block;
+  background-color: rgb(194, 190, 190);
+  border:2px solid gray;
+  border-radius: 4px;
+  color: black;
+  padding: 6px 10px;
+  font-size: 14px;
+  transition-duration: 0.3s;
+}
+button.submit:hover{
+  background-color: rgb(134, 132, 132);
+  border:2px solid coral;
+  color: black;
+  padding: 6px 10px;
+  font-size: 14px;
+  top: 100px;
+}
+
