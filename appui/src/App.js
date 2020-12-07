@@ -13,7 +13,7 @@ class App extends Component {
     }
 
     this.handleVoting = this.handleVoting.bind(this);
-    this.handleAddingNewPoll = this.handleAddingNewPoll.bind(this);
+    this.handleNewPoll = this.handleNewPoll.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -74,7 +74,7 @@ class App extends Component {
     })
   }
 
-  handleAddingNewPoll(Poll) {
+  handleNewPoll(Poll) {
     web3.eth.getTransactionCount(defaultAccount.address, (err, txCount) => {
       const txObject = {
         nonce: web3.utils.toHex(txCount),
