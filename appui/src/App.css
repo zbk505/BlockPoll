@@ -12,15 +12,46 @@ h1{
   text-align: center;
 }
 p.desc{
-  position: relative;
+  position: absolute;
   text-align: center;
-  top: -20px;
+  top: 100px;
+  left: 50px;
 }
-p.newpoll{
-  text-align: left;
+p.newpoll_choices{
+  position: absolute;
+  top: 260px;
   font-size: 14px;
 }
-textarea.newpoll{
+p.newpoll_name{
+  position: absolute;
+  top: 225px;
+  font-size: 14px;
+}
+table.demo_table{
+  position: absolute; 
+  top: 200;
+  left: 400;
+}
+table {
+  position: absolute;
+  top:200;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  text-align: center;
+  padding: 8px;
+}
+p.vote_desc{
+  position: absolute;
+  right: 100px;
+  top: 150px;
+}
+textarea.newpoll_choices{
+  position:absolute;
+  top: 270px;
+  left: 120px;
   text-align: left;
   background-color:rgb(194, 190, 190) ;
   resize: none;
@@ -28,7 +59,32 @@ textarea.newpoll{
   border: 2px solid black;
   border-radius: 4px;
 }
-button.submit{
+textarea.newpoll_name{
+  position:absolute;
+  top: 240px;
+  left: 120px;
+  text-align: left;
+  background-color:rgb(194, 190, 190) ;
+  resize: none;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 4px;
+}
+
+form.pollid{
+  position: absolute;
+  right: 200px;
+  top: 200px;
+}
+form.choiceid{
+  position: absolute;
+  right: 200px;
+  top: 200px;
+}
+button.submit_vote{
+  position: absolute;
+  right:130px;
+  top: 200px;
   cursor: pointer;
   display: block;
   background-color: rgb(194, 190, 190);
@@ -39,12 +95,36 @@ button.submit{
   font-size: 14px;
   transition-duration: 0.3s;
 }
-button.submit:hover{
-  background-color: rgb(134, 132, 132);
-  border:2px solid coral;
+button.submit{
+  position: absolute;
+  top:270px;
+  left: 300px;
+  cursor: pointer;
+  display: block;
+  background-color: rgb(194, 190, 190);
+  border:2px solid gray;
+  border-radius: 4px;
   color: black;
   padding: 6px 10px;
   font-size: 14px;
-  top: 100px;
+  transition-duration: .5s;
+}
+button.submit_vote:hover{
+  position: absolute;
+  right:130px;
+  top: 195px;
+  background-color: rgb(134, 132, 132);
+  color: black;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+button.submit:hover{
+  position: absolute;
+  top:265px;
+  left: 300px;
+  background-color: rgb(134, 132, 132);
+  color: black;
+  padding: 6px 10px;
+  font-size: 14px;
 }
 

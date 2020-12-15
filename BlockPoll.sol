@@ -8,7 +8,6 @@ contract BlockPoll{
         mapping(bytes32 => bool)  options;//maps
         mapping(bytes32 => uint8) votes;
         mapping(address => bool) voters;
-       
     }
     
     Poll[] private activePolls;
