@@ -3,51 +3,128 @@
 }
 body
 {
-  background-color: blanchedalmond;
+  background-color: rgb(161, 93, 93);
 }
 h1{
+  color:rgb(194, 190, 190);
+  text-shadow:2px 2px rgb(63, 63, 63);
+  position: relative;
   text-align: center;
 }
-h2{
+p.desc{
+  position: absolute;
   text-align: center;
+  top: 100px;
+  left: 50px;
 }
-p{
+p.newpoll_choices{
+  position: absolute;
+  top: 260px;
+  font-size: 14px;
+}
+p.newpoll_name{
+  position: absolute;
+  top: 225px;
+  font-size: 14px;
+}
+table.demo_table{
+  position: absolute; 
+  top: 200;
+  left: 400;
+}
+table {
+  position: absolute;
+  top:200;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
   text-align: center;
+  padding: 8px;
 }
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p.vote_desc{
+  position: absolute;
+  right: 100px;
+  top: 150px;
 }
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+textarea.newpoll_choices{
+  position:absolute;
+  top: 270px;
+  left: 120px;
+  text-align: left;
+  background-color:rgb(194, 190, 190) ;
+  resize: none;
+  height: 160px;
+  border: 2px solid black;
+  border-radius: 4px;
 }
-.button_default{
-  background-color: lightgrey;
-}
-.button1{
-  background-color: lightgrey;
-  position: fixed;
-  text-align: right;
-}
-.form1{
-  background-color: lightgrey;
-}
-.App-link {
-  color: #61dafb;
+textarea.newpoll_name{
+  position:absolute;
+  top: 240px;
+  left: 120px;
+  text-align: left;
+  background-color:rgb(194, 190, 190) ;
+  resize: none;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form.pollid{
+  position: absolute;
+  right: 200px;
+  top: 200px;
 }
+form.choiceid{
+  position: absolute;
+  right: 200px;
+  top: 200px;
+}
+button.submit_vote{
+  position: absolute;
+  right:130px;
+  top: 200px;
+  cursor: pointer;
+  display: block;
+  background-color: rgb(194, 190, 190);
+  border:2px solid gray;
+  border-radius: 4px;
+  color: black;
+  padding: 6px 10px;
+  font-size: 14px;
+  transition-duration: 0.3s;
+}
+button.submit{
+  position: absolute;
+  top:270px;
+  left: 300px;
+  cursor: pointer;
+  display: block;
+  background-color: rgb(194, 190, 190);
+  border:2px solid gray;
+  border-radius: 4px;
+  color: black;
+  padding: 6px 10px;
+  font-size: 14px;
+  transition-duration: .5s;
+}
+button.submit_vote:hover{
+  position: absolute;
+  right:130px;
+  top: 195px;
+  background-color: rgb(134, 132, 132);
+  color: black;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+button.submit:hover{
+  position: absolute;
+  top:265px;
+  left: 300px;
+  background-color: rgb(134, 132, 132);
+  color: black;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
