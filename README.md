@@ -12,6 +12,7 @@ We propose an app that would function in a similar fashion to these already esta
 The project is not yet deployed as its own website, so in order to use the app you will need to create your own instance.
 The project is built with React, so you will need to run the npm commands to get it started. You will also need an instance of Ganache running, and will need to edit the relevant info in config.js
 ## Demo video 
+https://youtu.be/cEDPu7BNEmY
 ## Contributors 
 * Zach Baker, Team Leader
 * Serena Lin
