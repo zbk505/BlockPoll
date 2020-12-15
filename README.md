@@ -15,4 +15,4 @@ The project is built with React, so you will need to run the npm commands to get
 https://youtu.be/cEDPu7BNEmY
 ## Contributors 
 * Zach Baker, Team Leader
-* Serena Lin
+* Serena Lin , Teammate 
